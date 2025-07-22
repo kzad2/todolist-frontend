@@ -14,7 +14,7 @@ function Home() {
           {/* Bagian Teks Hero */}
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font text-4xl sm:text-5xl lg:text-6xl mb-4 font-bold text-white">
-              ToDo List Pintar: <span className="text">Definisikan Sukses Anda</span>, Hari Demi Hari. {/* Kelas warna span diperbaiki */}
+              ToDo List Pintar:  <span className="text">Definisikan Sukses Anda</span>, Hari Demi Hari. {/* Kelas warna span diperbaiki */}
             </h1><br />
             <div className="flex justify-center">
               <Link
