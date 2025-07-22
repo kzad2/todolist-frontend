@@ -157,7 +157,8 @@ function Home() {
             >
             Mulai Gratis
           </Link>
-        </div>//tes
+          <p>tess</p>
+        </div>
       </section>
 
     </div>
