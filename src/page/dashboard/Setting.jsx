@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import AuthController from "../../controllers/AuthController";
 
 function Setting() {
   const [form, setForm] = useState({
@@ -37,7 +38,7 @@ function Setting() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/user/change-password`,
+        `${import.meta.env.VITE_API_URL}/v1/auth/user/change-password`,
         {
           current_password: form.current_password,
           new_password: form.new_password,
@@ -71,12 +72,13 @@ function Setting() {
 
   return (
     <>
-      <div className="bg-gray-900 mb-6 py-5 px-5 rounded-md">
-        <h1 className="font-bold text-2xl text-white">Ganti Password</h1>
+      <div className="bg-[#004030] mb-6 py-5 px-5 rounded-md">
+        <h1 className="font-bold text-2xl text-white">Setting</h1>
       </div>
 
       <div className="grid xl:grid-cols-3 grid-cols-1">
-        <div className="bg-gray-900 mb-6 py-5 px-5 rounded-md" data-aos="fade-up">
+        <div className="bg-[#004030] mb-6 py-5 px-5 rounded-md" data-aos="fade-up">
+          <h3 className="font-bold text-2xl text-white text-center">ganti Password</h3><br />
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label className="block text-white mb-1">Password Saat Ini</label>
@@ -117,7 +119,7 @@ function Setting() {
             <div className="mb-3 flex space-x-3">
               <button
                 type="submit"
-                className="bg-yellow-400 hover:bg-yellow-500 text-white font-medium transition-colors px-3 py-1 rounded-sm"
+                className="bg-[#4A9782] hover:bg-[#4A9782]/90 text-white font-medium transition-colors px-20 py-1 rounded-sm"
               >
                 Ganti Password
               </button>

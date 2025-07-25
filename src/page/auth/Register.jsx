@@ -85,7 +85,7 @@ function Register() {
                 onChange={handleChange}
                 required
                 minLength={6}
-                placeholder="Minimal 6 karakter"
+                placeholder="Minimal 8 karakter"
                 className="w-full px-4 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#2a816b]"
               />
             </div>

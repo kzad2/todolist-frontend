@@ -17,7 +17,7 @@ function Profile() {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/me`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/v1/auth/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -66,7 +66,7 @@ function Profile() {
       }
 
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/user/update`,
+        `${import.meta.env.VITE_API_URL}/v1/auth/user/update`,
         formData,
         {
           headers: {
@@ -107,7 +107,7 @@ function Profile() {
     });
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`${import.meta.env.VITE_API_URL}/user/delete-avatar`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/v1/auth/user/delete-avatar`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -139,25 +139,25 @@ function Profile() {
 
   return (
     <>
-      <div className="bg-gray-900 mb-6 py-5 px-5 rounded-md">
+      <div className="bg-[#004030] mb-6 py-5 px-5 rounded-md">
         <h1 className="font-bold text-2xl text-white">My Profile</h1>
       </div>
 
       <div className="grid xl:grid-cols-3 grid-cols-1">
         <div
-          className="bg-gray-900 mb-6 py-5 px-5 rounded-md min-h-[300px] flex items-center justify-center"
+          className="bg-[#004030] mb-6 py-5 px-5 rounded-md min-h-[300px] flex items-center justify-center"
           data-aos="fade-up"
         >
           {loading ? (
-            <span className="w-8 h-8 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin"></span>
+            <span className="w-8 h-8 border-4 border-[#FFF9E5] border-t-transparent rounded-full animate-spin"></span>
           ) : (
             <form onSubmit={handleSubmit} className="w-full">
               <div className="mb-3">
                 <img
-                  src={avatarPreview || "/src/assets/profile-default.png"}
+                  src={avatarPreview || "/src/images/profile.jpg"}
                   alt="avatar"
                   className="object-cover rounded h-56 w-full shadow"
-                />
+                />  
               </div>
 
               <div className="mb-3">
@@ -187,7 +187,7 @@ function Profile() {
                 <input
                   type="file"
                   onChange={handleAvatarChange}
-                  accept="image/*"
+                  accept="/src/images/profile.jpg"
                   className="w-full border border-white text-white px-3 py-1 rounded"
                 />
               </div>
@@ -195,7 +195,7 @@ function Profile() {
               <div className="mb-3 flex space-x-3">
                 <button
                   type="submit"
-                  className="bg-yellow-400 hover:bg-yellow-500 text-white font-medium transition-colors px-3 py-1 rounded-sm"
+                  className="bg-[#4A9782] hover:bg-[#4A9882]/90 text-white font-medium transition-colors px-3 py-1 rounded-sm"
                 >
                   Save Changes
                 </button>

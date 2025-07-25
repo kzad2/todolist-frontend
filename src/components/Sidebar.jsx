@@ -6,9 +6,9 @@ function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
 
   const activeClass =
-    "flex items-center gap-3 px-4 py-2 rounded-lg mb-2 transition text-white bg-yellow-400";
+    "flex items-center gap-3 px-4 py-2 rounded-lg mb-2 transition text-white bg-[#4A9782]";
   const baseClass =
-    "flex items-center gap-3 px-4 py-2 rounded-lg mb-2 hover:text-yellow-800 transition text-white hover:bg-yellow-200";
+    "flex items-center gap-3 px-4 py-2 rounded-lg mb-2 hover:text-white transition text-white hover:bg-[#4A9782]";
 
   const logout = AuthController((state) => state.logout);
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ function Sidebar({ isOpen, onClose }) {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen w-64 md:pt-6 bg-gray-900 flex flex-col justify-between z-50 transition-transform duration-300 ${
+      className={`fixed top-0 left-0 h-screen w-64 md:pt-6 bg-[#004030] flex flex-col justify-between z-50 transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } xl:translate-x-0`}
     >
@@ -51,10 +51,10 @@ function Sidebar({ isOpen, onClose }) {
             src={
               user?.avatar
                 ? `${import.meta.env.VITE_API_URL_IMAGE}/storage/${user.avatar}`
-                : "/src/assets/profile-default.png"
+                : "/src/images/!.jpg"
             }
             alt="Profile"
-            className="w-24 h-24 rounded-full object-cover border-2 border-yellow-400 mb-2"
+            className="w-24 h-24 rounded-full object-cover border-2 border-[#4A9782] mb-2"
           />
           <p className="text-white font-medium text-sm">
             Hallo, {user?.name || ""}

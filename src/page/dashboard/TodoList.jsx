@@ -178,20 +178,20 @@ function TodoList() {
 
   return (
     <>
-      <div className="bg-gray-900 mb-6 py-5 px-5 rounded-md">
+      <div className="bg-[#004030] mb-6 py-5 px-5 rounded-md">
         <h1 className="font-bold text-2xl text-white">Todo List</h1>
       </div>
 
       <button
-        className="font-medium bg-yellow-400 hover:bg-yellow-500 text-white text-lg px-4 py-2 rounded-md"
+        className="font-medium bg-[#004030] hover:bg-[#4A9782] text-white text-lg px-4 py-2 rounded-md"
         onClick={() => openAddModal()}
       >
         Tambah Todo
       </button>
       {modal && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-6 backdrop-blur">
+        <div className="fixed inset-0 bg-black/40 bg-opacity/40 flex items-center justify-center z-50 px-6 backdrop-blur">
           <div
-            className="bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-md"
+            className="bg-[#004030] rounded-lg shadow-lg p-6 w-full max-w-md"
             data-aos="fade-up"
             data-aos-duration="500"
           >
@@ -249,13 +249,13 @@ function TodoList() {
                 <button
                   type="button"
                   onClick={() => setModal(false)}
-                  className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
+                  className="px-4 py-2 rounded bg-[#4A9782] hover:bg-[#4A9782]/90 text-white"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded bg-yellow-400 text-white hover:bg-yellow-500"
+                  className="px-4 py-2 rounded bg-[#4A9782] text-white hover:bg-[#4A9782]/90"
                 >
                   Simpan
                 </button>
@@ -266,12 +266,12 @@ function TodoList() {
       )}
 
       {loading ? (
-        <div className="bg-gray-900 py-8 px-6 rounded-md text-center mt-6">
-          <span className="loading loading-spinner text-primary text-3xl"></span>
-          <p className="text-gray-500 mt-4 text-sm">Sedang memuat data...</p>
+        <div className="bg-[#004030] py-8 px-6 rounded-md text-center mt-6">
+          <span className="loading loading-spinner text-[#FFF9E5] text-3xl"></span>
+          <p className="text-white mt-4 text-sm">Sedang memuat data...</p>
         </div>
       ) : task.length === 0 ? (
-        <div className="bg-gray-900 py-8 px-6 rounded-md text-center mt-6">
+        <div className="bg-[#004030] py-8 px-6 rounded-md text-center mt-6">
           <p className="text-white text-sm">Belum ada todo.</p>
         </div>
       ) : (
