@@ -8,7 +8,7 @@ function Home() {
     <div className="min-h-screen" id="home">
       
       {/* Section 1: Hero/Intro */}
-      <section className="bg-gradient-to-br from-[#003025] to-[#1a6053] py-23.5 px-6 sm:px-6 lg:px-20">
+      <section className="bg-gradient-to-br from-[#003025] to-[#1a6053] py-23.5 px-6 sm:px-6 lg:px-30">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
 
           {/* Bagian Teks Hero */}
@@ -17,11 +17,6 @@ function Home() {
               ToDo List Pintar:<span className="text">Definisikan Sukses Anda</span>, Hari Demi Hari. {/* Kelas warna span diperbaiki */}
             </h1><br />
             <div className="flex justify-center">
-              <Link
-                className="inline-flex items-center text-white border border-white py-2 px-6 focus:outline-none hover:bg-white hover:text-[#004030] rounded-full text-xl sm:text-2xl leading-none transition-colors duration-300"
-                to={"/register"}>
-                Daftar Sekarang
-              </Link>
             </div>
           </div>
 

@@ -195,7 +195,7 @@ function Profile() {
               <div className="mb-3 flex space-x-3">
                 <button
                   type="submit"
-                  className="bg-[#4A9782] hover:bg-[#4A9882]/90 text-white font-medium transition-colors px-3 py-1 rounded-sm"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors px-3 py-1 rounded-sm"
                 >
                   Save Changes
                 </button>

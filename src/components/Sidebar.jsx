@@ -51,7 +51,7 @@ function Sidebar({ isOpen, onClose }) {
             src={
               user?.avatar
                 ? `${import.meta.env.VITE_API_URL_IMAGE}/storage/${user.avatar}`
-                : "/src/images/!.jpg"
+                : "/src/images/profile.jpg"
             }
             alt="Profile"
             className="w-24 h-24 rounded-full object-cover border-2 border-[#4A9782] mb-2"

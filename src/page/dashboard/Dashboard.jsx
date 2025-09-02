@@ -20,7 +20,7 @@ function Dashboard() {
     };
 
     fetchTask();
-  }, [getTask, setLoading]);
+  }, [getTask]);
 
   return (
     <>
@@ -36,12 +36,12 @@ function Dashboard() {
           <h2 className="text-white text-lg mb-2">Total Todos</h2>
           {loading ? (
             <p className="text-3xl font-bold text-[#4A9782]">
-              <span className="loading loading-spinner text-[#4A9782] text-3xl"></span>{" "}
+              <span className="loading loading-spinner text-emerald-400  text-3xl"></span>{" "}
               <i className="fa-regular fa-notebook"></i>
             </p>
           ) : (
-            <p className="text-3xl font-bold text-[#4A9782]">
-              {task.length} <i className="fa-regular fa-notebook"></i>
+            <p className="text-3xl font-bold text-emerald-400 ">
+               {task ? task.length : 0} <i className="fa-regular fa-notebook"></i>
             </p>
           )}
         </Link>

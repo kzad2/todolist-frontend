@@ -46,7 +46,7 @@ function Register() {
       <div className="bg-white shadow-lg max-w-4xl w-full grid md:grid-cols-2 grid-cols-1 rounded-xl overflow-hidden">
         <div className="bg-[#004030] hidden md:flex justify-center items-center">
           <Link to="/" className="text-6xl text-white font-bold">
-            Todobee
+            TodoList
           </Link>
         </div>
         <div className="p-10">
@@ -84,8 +84,8 @@ function Register() {
                 value={form.password}
                 onChange={handleChange}
                 required
-                minLength={6}
-                placeholder="Minimal 8 karakter"
+                minLength={4}
+                placeholder="Minimal 4 karakter"
                 className="w-full px-4 py-2 rounded bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#2a816b]"
               />
             </div>

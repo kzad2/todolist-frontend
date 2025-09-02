@@ -16,7 +16,7 @@ import Plan from "../page/dashboard/Plan.jsx";
 
 function AppRoute() {
     return (
-        <Routes>
+    <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

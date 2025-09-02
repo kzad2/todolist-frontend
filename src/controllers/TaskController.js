@@ -11,65 +11,133 @@ const TaskController = create((set) => ({
   getTask: async () => {
     try {
       const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Token autentikasi tidak ditemukan.");
+      }
 
       const res = await axios.get(`${api}/v1/tasks`, {
         headers: {
           Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
         },
       });
 
-      set({ task: res.data, error: null });
+      set({
+        task: res.data.data,
+        error: null,
+        success: null,
+      });
+
     } catch (err) {
-      const message = err.response?.data?.message || "Gagal mengambil data todo";
+      const message = err.response?.data?.message || err.message || "Gagal memuat task";
       set({ error: message, task: [] });
+      throw new Error(message);
     }
   },
 
-  storeTask: async (formData, navigate, id = null) => {
+  storeTask: async (formData, editId = null) => {
     try {
       const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Token autentikasi tidak ditemukan.");
+      }
 
-      await axios.post(
-        id ? `${api}/tasks/${id}` : `${api}/v1/tasks`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      let res;
+      let url;
+      let method;
+      let successMessage;
 
-      set({
-        success: "Task berhasil disimpan",
-        error: null,
+      if (editId) {
+        url = `${api}/v1/tasks/${editId}`;
+        method = 'post';
+        formData.append('_method', 'PUT');
+        successMessage = "Task berhasil diupdate";
+      } else {
+        url = `${api}/v1/tasks`;
+        method = 'post';
+        successMessage = "Task berhasil ditambahkan";
+      }
+
+      res = await axios[method](url, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
-      navigate && navigate("/todo-list");
+      if (editId) {
+        set((state) => ({
+          task: state.task.map((item) =>
+            item.id === editId ? res.data.data : item
+          ),
+          success: res.data.message || successMessage,
+          error: null,
+        }));
+      } else {
+        set((state) => ({
+          task: [...(state.task ?? []), res.data.data],
+          success: res.data.message || successMessage,
+          error: null,
+        }));
+      }
+
     } catch (err) {
-      const message = err.response?.data?.message || "Gagal menyimpan task. Silakan coba lagi.";
-      set({ error: message, success: null });
+      const message = err.response?.data?.message || err.message || "Gagal menyimpan task";
+      set({ error: message });
+      throw new Error(message);
     }
   },
 
   deleteTask: async (id) => {
     try {
       const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Token autentikasi tidak ditemukan.");
+      }
 
       const res = await axios.delete(`${api}/v1/tasks/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
         },
       });
 
       set((state) => ({
-        task: state.task.filter((task) => task.id !== id),
-        success: res.data.message,
+        task: state.task.filter((item) => item.id !== id),
+        success: res.data.message || "Task berhasil dihapus",
         error: null,
       }));
     } catch (err) {
-      const message = err.response?.data?.message || "Gagal menghapus task";
+      const message = err.response?.data?.message || err.message || "Gagal menghapus task";
       set({ error: message });
+      throw new Error(message);
+    }
+  },
+
+  deleteAllTasks: async () => {
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("Token autentikasi tidak ditemukan.");
+      }
+
+      const res = await axios.delete(`${api}/v1/tasks/delete-all`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+        },
+      });
+
+      set({
+        task: [],
+        success: res.data.message || "Semua task berhasil dihapus",
+        error: null,
+      });
+    } catch (err) {
+      const message = err.response?.data?.message || err.message || "Gagal menghapus semua task";
+      set({ error: message });
+      throw new Error(message);
     }
   },
 

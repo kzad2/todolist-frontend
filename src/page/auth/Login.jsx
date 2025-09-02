@@ -42,7 +42,7 @@ function Login() {
       <div className="bg-white shadow-2xl w-5xl grid md:grid-cols-2 grid-cols-1 md:rounded-3xl rounded-xl">
         <div className="bg-[#004030] rounded-l-3xl justify-center items-center hidden md:flex">
           <Link to="/" className="text-6xl text-white font-bold">
-            Todobee
+            TodoList
           </Link>
           <p className="">
           </p>

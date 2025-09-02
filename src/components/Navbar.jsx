@@ -2,23 +2,6 @@ import { Link } from "react-router-dom";
 import React from 'react';
 import ScrollToTop from "../components/ScrollToTop.jsx";
 
-const baseUrl = import.meta.env.VITE_API_URL;
-
-async function test() {
-  try {
-    const res = await fetch(`${baseUrl}/v1/users`);
-    if (!res.ok) throw new Error("Gagal fetch");
-
-    const data = await res.json();
-    console.log("Data user:", data);
-    alert(JSON.stringify(data, null, 2));
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Gagal mengambil data user");
-  }
-}
-
-
 function Navbar() {
   return (
     <nav
@@ -37,11 +20,6 @@ function Navbar() {
           <Link to="/">Home</Link>
           <Link to="/about">About </Link>
           <Link to="/contact">Contact</Link>
-          <button 
-                className="text-black hover:text-gray-700 ml-2"
-                onClick={test}
-                  >Test Ambil User
-                  </button>
         </div>
       </div>
 
